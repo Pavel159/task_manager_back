@@ -63,7 +63,7 @@ class TodoItemController {
     let todos;
     if (userId) {
       todos = await TodoItem.findAndCountAll({
-        where: { userId, status: 'Completed' },
+        where: { userId, status: 'Completed', finished: false },
       });
     } else {
       todos = await TodoItem.findAndCountAll();
