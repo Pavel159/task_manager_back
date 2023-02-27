@@ -58,6 +58,19 @@ class TodoItemController {
     return res.json(todos);
   }
 
+  async getCompleted(req, res) {
+    let { userId } = req.query;
+    let todos;
+    if (userId) {
+      todos = await TodoItem.findAndCountAll({
+        where: { userId, status: 'Completed' },
+      });
+    } else {
+      todos = await TodoItem.findAndCountAll();
+    }
+    return res.json(todos);
+  }
+
   async getFinished(req, res) {
     let { userId } = req.query;
     let todos;
