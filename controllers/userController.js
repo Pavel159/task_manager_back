@@ -56,10 +56,6 @@ class UserController {
     });
     return res.json(user);
   }
-
-  async hello(req, res) {
-    return res.status(200).send({ message: 'Hello' });
-  }
 }
 
 module.exports = new UserController();
